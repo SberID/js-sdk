@@ -1,0 +1,5 @@
+.github/
+.idea/
+node_modules/
+dist/
+src/sberid-analytics/sa.bundle.js

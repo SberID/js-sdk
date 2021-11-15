@@ -1,0 +1,16 @@
+:root {
+    --sbid-bg-color: #fff;
+    --sbid-bg-color-hover: #fff;
+    --sbid-bg-color-active: #e5e5e5;
+    --sbid-brd-width: 1px;
+    --sbid-brd-style: solid;
+    --sbid-brd-radius: 4px;
+    --sbid-brd-color: #767676;
+    --sbid-brd-color-hover: #21a038;
+    --sbid-brd-color-active: #21a038;
+    --sbid-text-color: #000;
+    --sbid-fill-color: #21a038;
+    --sbid-font-family: 'SB Sans', 'Roboto', 'San Francisco', sans-serif;
+    --sbid-font-size: 14px;
+    --sbid-font-weight: 400;
+}

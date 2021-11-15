@@ -1,0 +1,234 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 100%;
+    font-size: 12px;
+    background: #fff;
+    line-height: 1.2;
+    color: #000014;
+    font-family: 'SB Sans', 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+html {
+    min-height: 100%;
+}
+
+html body {
+    min-height: 100%;
+}
+
+#root {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.logger {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    background: #fff;
+    margin-top: 16px;
+    width: 100%;
+}
+
+.typography {
+    color: #000014;
+}
+
+.typography--headline {
+    font-size: 32px;
+    line-height: 36px;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+
+.typography--title {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: bold;
+    margin: 0 0 8px;
+}
+
+.typography--subheader {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: normal;
+    margin: 0 0 8px;
+}
+
+.typography--body {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: bold;
+    margin: 0 0 16px;
+}
+
+.typography--color-black-opaque {
+    color: rgba(38, 38, 38, 0.65);
+}
+
+.typography--color-greyish {
+    color: #aaa;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+    box-shadow: 0 12px 24px rgb(45 73 88 / 15%);
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    margin: 0;
+    max-width: 1024px;
+    min-height: auto;
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    flex: none;
+    height: 100vh;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.form-group--footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-group--footer > * + * {
+    margin-left: 16px;
+}
+
+.form-group + .form-group {
+    margin-top: 16px;
+}
+
+.input {
+    display: block;
+    outline: none;
+    -webkit-filter: none;
+    filter: none;
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.label {
+    color: #000014;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.input::-ms-reveal {
+    display: none;
+}
+
+.input::-ms-clear {
+    display: none;
+}
+
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover,
+.input:-webkit-autofill:focus {
+    box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.input--default {
+    appearance: textfield;
+    background: #fff;
+    border: 1px solid #ced1d5;
+    border-radius: 5px;
+    box-sizing: border-box;
+    filter: none;
+    font-size: 17px;
+    line-height: 26px;
+    min-height: 50px;
+    outline: none;
+    padding: 11px 15px;
+    transition: border-color 0.17s ease 0s;
+    width: 100%;
+}
+
+.input--default:focus {
+    border: 1px solid #000014;
+}
+
+.input--readonly {
+    border: 1px solid transparent;
+}
+
+.input--readonly:focus {
+    border: 1px solid transparent;
+}
+
+.input::-webkit-input-placeholder {
+    color: #999;
+}
+
+.input:-ms-input-placeholder {
+    color: #999;
+}
+
+.input::-ms-input-placeholder {
+    color: #999;
+}
+
+.input::placeholder {
+    color: #999;
+}
+
+.input.error {
+    border: 1px solid #cb1906;
+}
+
+.input.error:focus {
+    border: 1px solid #cb1906;
+}
+
+.input:disabled {
+    background-color: #e8e8e8;
+    border-color: #e8e8e8;
+    color: rgba(38, 38, 38, 0.4);
+}
+
+.button {
+    border: 2px solid;
+    border-radius: 10px;
+    cursor: pointer;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    min-height: 50px;
+    outline: none;
+    padding: 11px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    background-color: #21a038;
+    border-color: #21a038;
+    color: #fff;
+}

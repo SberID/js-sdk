@@ -1,0 +1,17 @@
+.nav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.link {
+    cursor: pointer;
+    font-weight: 400;
+    color: #21a038;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.link + .link {
+    margin-left: 10px;
+}

@@ -1,0 +1,12 @@
+.DS_Store
+.eslintcache
+.idea/
+.cache/
+node_modules/
+options/dist
+coverage/
+public/
+!public/index.html
+!public/demo.html
+!public/oidc.html
+!public/success.html

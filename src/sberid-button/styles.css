@@ -1,0 +1,138 @@
+.sbid-check-button-container {
+    position: fixed;
+    left: -9999px;
+}
+
+.sbid-button {
+    text-decoration: none;
+    display: var(--sbid-button-display);
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    min-height: 28px;
+    max-height: 64px;
+    height: var(--sbid-height);
+    background-color: var(--sbid-bg-color);
+    border-color: var(--sbid-brd-color);
+    border-width: var(--sbid-brd-width);
+    border-style: var(--sbid-brd-style);
+    color: var(--sbid-text-color);
+    fill: var(--sbid-fill-color);
+    border-radius: var(--sbid-brd-radius);
+    padding: var(--sbid-padding);
+    font-size: var(--sbid-font-size);
+    line-height: var(--sbid-line-height);
+}
+
+.sbid-button:hover,
+.sbid-button:focus {
+    background-color: var(--sbid-bg-color-hover);
+    border-color: var(--sbid-brd-color-hover);
+}
+
+.sbid-button:active {
+    background-color: var(--sbid-bg-color-active);
+    border-color: var(--sbid-brd-color-active);
+}
+
+.sbid-button__logo {
+    height: var(--sbid-logo-size);
+    min-height: var(--sbid-logo-size);
+    width: var(--sbid-logo-size);
+    min-width: var(--sbid-logo-size);
+}
+
+.sbid-button__logo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.sbid-button__logo + .sbid-button__text {
+    margin-left: 8px;
+}
+
+.sbid-button__text {
+    font-size: var(--sbid-font-size);
+    text-decoration: none;
+    font-family: var(--sbid-font-family);
+    font-weight: var(--sbid-font-weight);
+}
+
+.sbid-button-loader {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-radius: var(--sbid-brd-radius);
+    background-color: var(--sbid-bg-color);
+    display: none;
+}
+
+.sbid-button-loader svg {
+    height: 60%;
+    min-height: 22px;
+    max-height: 36px;
+}
+
+.sbid-button-loader--show {
+    display: flex;
+}
+
+.sbid-button-change-user {
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: calc(-1 * var(--sbid-brd-width));
+    top: calc(-1 * var(--sbid-brd-width));
+    height: calc(100% + 2 * var(--sbid-brd-width));
+    width: 26px;
+    max-width: 32px;
+    border-radius: 0 var(--sbid-brd-radius) var(--sbid-brd-radius) 0;
+}
+
+.sbid-button-change-user:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.sbid-button-change-user__popup {
+    background: #ffffff;
+    box-shadow: 0px 12px 24px rgba(45, 73, 88, 0.15);
+    border-radius: 10px;
+    position: absolute;
+    font-size: 15px;
+    line-height: 27px;
+    white-space: nowrap;
+    padding: 15px 30px;
+    font-weight: bold;
+    top: calc(100% - 10px);
+    display: none;
+    color: #000014;
+    z-index: 1;
+}
+
+.sbid-notification-banner .sbid-button-change-user__popup {
+    top: auto;
+    bottom: calc(100% - 10px);
+    right: 0;
+}
+
+.sbid-button-change-user__popup--mobile {
+    bottom: calc(100% - 10px);
+    right: 0;
+}
+
+.sbid-button-change-user[data-stage='popup'] .sbid-button-change-user__popup {
+    display: block;
+}
+
+.sbid-button[data-personalization='true'] .sbid-button-change-user {
+    display: flex;
+}
+
+.sbid-button .sbid-button__logo svg {
+    fill: var(--sbid-fill-color);
+}

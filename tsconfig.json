@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "module": "esnext",
+        "target": "es5",
+        "lib": [
+            "es5",
+            "es6",
+            "es7",
+            "es2017",
+            "dom"
+        ],
+        "sourceMap": true,
+        "moduleResolution": "node",
+        "baseUrl": "src",
+        "skipLibCheck": true,
+        "strict": true,
+        "declaration": true,
+        "declarationDir": "./dist/typings",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "noImplicitAny": false,
+        "esModuleInterop": true,
+        "rootDir": "./src"
+    },
+
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules",
+        "./dist/typings"
+    ]
+}

@@ -1,0 +1,13 @@
+import { CssObject, OidcParams } from '../interfaces/common';
+export declare const getBrowserTypeByAlias: (browserAlias: string) => string;
+export declare const getVersion: () => string;
+export declare const getUrlSearchParams: (url?: string) => OidcParams;
+export declare const buildUrl: (url: string, params: OidcParams) => string;
+declare type LogImportance = 'info' | 'success' | 'error';
+export declare const log: (message: string | string[] | any, importance?: LogImportance) => void;
+export declare const setCssStyle: (element: HTMLElement | null, styles: CssObject) => void;
+export declare const hideOnClickOutside: (element: HTMLElement, cb: () => void) => void;
+export declare const showLoader: () => void;
+export declare const hideLoader: () => void;
+export declare const successWindowListener: () => void;
+export {};

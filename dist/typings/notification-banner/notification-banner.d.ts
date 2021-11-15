@@ -1,0 +1,34 @@
+import { CssObject, User } from '../interfaces/common';
+import { NotificationPosition } from './interfaces';
+import { SberidUniversalLink } from '../universal-link';
+import { SberidSDKErrorResult, SberidSDKSuccessResult, SberidSDKProps } from '../sberid-sdk';
+import { FastAuthorizationResponse } from '../fast-login/interfaces';
+import { FastLogin } from '../fast-login';
+export declare class NotificationBanner {
+    private config;
+    private button;
+    private notification;
+    private readonly parser;
+    private userHelper;
+    universalLinkDetect: SberidUniversalLink;
+    fastLogin: FastLogin;
+    private user;
+    private oidcParams;
+    onSuccessCallback: (data?: SberidSDKSuccessResult) => void;
+    onErrorCallback: (data?: SberidSDKErrorResult) => void;
+    constructor(config: SberidSDKProps);
+    handleUserChange(user?: User): void;
+    setOIDCParams(config: SberidSDKProps): Promise<void>;
+    silentAuthorization(): Promise<FastAuthorizationResponse>;
+    create(config: SberidSDKProps): Promise<void>;
+    handleButtonClick(e: Event): Promise<boolean>;
+    private isMobile;
+    isNotification(): boolean;
+    show(user?: User): Promise<void>;
+    hide(): void;
+    onClose(): void;
+    getStyle(): CssObject;
+    getCookieExpires(countClose: number): number;
+    destroy(): void;
+    static getDefaultPosition(pos?: NotificationPosition): NotificationPosition;
+}

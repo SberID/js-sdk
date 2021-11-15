@@ -1,0 +1,31 @@
+.logger__item {
+    color: #363636;
+    white-space: pre;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    white-space: break-spaces;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.logger__item + .logger__item {
+    margin-top: 8px;
+}
+
+.logger__item--error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.logger__item--success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.logger__item--info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}

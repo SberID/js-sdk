@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'SB Sans';
+    src: url('SBSansUI-Regular.eot');
+    src: url('SBSansUI-Regular.eot?#iefix') format('embedded-opentype'),
+        url('SBSansUI-Regular.woff2') format('woff2'), url('SBSansUI-Regular.woff') format('woff'),
+        url('SBSansUI-Regular.ttf') format('truetype'),
+        url('SBSansUI-Regular.svg#SBSansInterface-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SB Sans';
+    src: url('SBSansUI-Bold.eot');
+    src: url('SBSansUI-Bold.eot?#iefix') format('embedded-opentype'),
+        url('SBSansUI-Bold.woff2') format('woff2'), url('SBSansUI-Bold.woff') format('woff'),
+        url('SBSansUI-Bold.ttf') format('truetype'),
+        url('SBSansUI-Bold.svg#SBSansInterface-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SB Sans';
+    src: url('SBSansUI-Light.eot');
+    src: url('SBSansUI-Light.eot?#iefix') format('embedded-opentype'),
+        url('SBSansUI-Light.woff2') format('woff2'), url('SBSansUI-Light.woff') format('woff'),
+        url('SBSansUI-Light.ttf') format('truetype'),
+        url('SBSansUI-Light.svg#SBSansInterface-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SB Sans';
+    src: url('SBSansUI-Semibold.eot');
+    src: url('SBSansUI-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('SBSansUI-Semibold.woff2') format('woff2'), url('SBSansUI-Semibold.woff') format('woff'),
+        url('SBSansUI-Semibold.ttf') format('truetype'),
+        url('SBSansUI-Semibold.svg#SBSansInterface-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

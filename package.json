@@ -1,0 +1,106 @@
+{
+    "name": "sberid-js-sdk",
+    "version": "3.0.0",
+    "description": "Javascript SDK для партнеров Сбер ID, упрощающая подключение SberbankID на сайте.",
+    "main": "dist/index.js",
+    "module": "dist/index.esm.js",
+    "typings": "dist/typings/index.d.ts",
+    "source": "src/index.ts",
+    "keywords": [
+        "sberid",
+        "sdk",
+        "browser",
+        "incognito"
+    ],
+    "author": {
+        "name": "Сбер ID",
+        "email": "Terekhov.M.Ge@sberbank.ru"
+    },
+    "contributors": [
+        {
+            "name": "Borodulya Alexey",
+            "email": "APBorodulya@sberbank.ru"
+        }
+    ],
+    "repository": "https://sbtatlas.sigma.sbrf.ru/stash/projects/PLESA/repos/sberid-sdk",
+    "license": "Sber Public License at-nc-sa v.2",
+    "lint-staged": {
+        "src/**/*.{js,ts,tsx}": "eslint --cache --quiet --fix"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "npx lint-staged"
+    },
+    "scripts": {
+        "prettier": "prettier '**/*.{js,ts,html}' --ignore-path ./.prettierignore",
+        "types": "tsc --noEmit",
+        "lint": "eslint src/**/*.{js,ts}",
+        "test": "jest --coverage",
+        "build": "npm run build:clean && npm run build:lib && npm run build:style",
+        "build:clean": "rimraf dist",
+        "build:lib": "rollup --config config/rollup/rollup.config.lib.js",
+        "build:style": "npx postcss ./src/styles/**/*.css -d ./dist/styles",
+        "finish": "npm run lint && npm run types"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.14.6",
+        "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+        "@babel/preset-env": "^7.14.5",
+        "@babel/preset-typescript": "^7.14.5",
+        "@commitlint/cli": "^12.1.4",
+        "@commitlint/config-conventional": "^12.1.4",
+        "@rollup/plugin-alias": "^3.1.2",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^19.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.0",
+        "@rollup/plugin-url": "^6.1.0",
+        "@semantic-release/changelog": "^5.0.1",
+        "@semantic-release/commit-analyzer": "^8.0.1",
+        "@semantic-release/git": "^9.0.0",
+        "@semantic-release/npm": "^7.0.5",
+        "@semantic-release/release-notes-generator": "^9.0.1",
+        "@types/jest": "^26.0.23",
+        "@typescript-eslint/eslint-plugin": "^4.27.0",
+        "@typescript-eslint/parser": "^4.27.0",
+        "autoprefixer": "^10.2.6",
+        "eslint": "^7.28.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-jsdoc": "^35.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "http-server": "^0.12.3",
+        "husky": "^4.2.5",
+        "jest": "^27.0.4",
+        "lint-staged": "^10.2.6",
+        "postcss": "^8.2.8",
+        "postcss-cli": "^8.3.1",
+        "postcss-copy-assets": "^0.3.1",
+        "postcss-import": "^14.0.0",
+        "postcss-inline-svg": "^5.0.0",
+        "postcss-loader": "^4.2.0",
+        "postcss-preset-env": "^6.7.0",
+        "postcss-svgo": "^4.0.2",
+        "postcss-url": "^10.1.3",
+        "prettier": "^2.3.1",
+        "rimraf": "^3.0.2",
+        "rollup": "^2.52.1",
+        "rollup-plugin-copy": "^3.4.0",
+        "rollup-plugin-css-only": "^3.1.0",
+        "rollup-plugin-external-globals": "^0.6.1",
+        "rollup-plugin-livereload": "^2.0.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-postcss": "^4.0.0",
+        "rollup-plugin-postcss-modules": "^1.0.8",
+        "rollup-plugin-serve": "^1.1.0",
+        "rollup-plugin-terser": "^7.0.1",
+        "rollup-plugin-typescript2": "^0.29.0",
+        "rollup-plugin-url": "^3.0.1",
+        "rollup-plugin-web-worker-loader": "^1.6.0",
+        "rollup-plugin-worker": "^2.6.0",
+        "semantic-release": "^17.4.4",
+        "simple-git-hooks": "^2.4.1",
+        "typescript": "^4.3.4"
+    },
+    "dependencies": {
+        "fast-deep-equal": "^3.1.3",
+        "unfetch": "^4.2.0"
+    }
+}
