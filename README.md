@@ -275,4 +275,9 @@ function onSuccessCallback(result) {
 ### Копирайт
 
 Автор: Сбер ID
-Сайт: [https://www.sberbank.ru/ru/person/dist_services/sberbankid/forbusiness](https://www.sberbank.ru/ru/person/dist_services/sberbankid/forbusines
+Сайт: https://www.sberbank.ru/ru/person/dist_services/sberbankid/forbusiness
+
+[prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
+[prs]: https://makeapullrequest.com
+[version-badge]: https://img.shields.io/npm/v/sberid-js-sdk.svg?style=flat-square
+[package]: https://www.npmjs.com/package/sberid-js-sdk
