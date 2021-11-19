@@ -1,5 +1,5 @@
 {
-  "name": "@sber_id/js-sdk",
+  "name": "@sberid/js-sdk",
   "version": "3.0.0",
   "description": "Javascript SDK для партнеров Сбер ID, упрощающая подключение SberbankID на сайте.",
   "main": "dist/index.js",
@@ -14,14 +14,14 @@
   ],
   "author": "Сбер ID <Terekhov.M.Ge@sberbank.ru>",
   "bugs": {
-    "url": "https://github.com/SberID/JSSDKSberID/issues"
+    "url": "https://github.com/SberID/js-sdk/issues"
   },
   "contributors": [
     "Borodulya Alexey <APBorodulya@sberbank.ru>"
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:SberID/JSSDKSberID.git"
+    "url": "git@github.com:SberID/js-sdk.git"
   },
   "license": "Sber Public License at-nc-sa v.2",
   "lint-staged": {

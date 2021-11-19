@@ -1,12 +1,16 @@
-# sberid-js-sdk
+# @sberid/js-sdk
+
+Javascript SDK для Партнеров Сбер ID, упрощающая подключение Сбер ID на сайте.
 
 [![version][version-badge]][package]
+[![Total Downloads][downloads-badge]][package]
 [![PRs Welcome][prs-badge]][prs]
 
 ## Оглавление
-- [sberid-js-sdk](#sberid-js-sdk)
+- [@sberid/js-sdk](#sberidjs-sdk)
   - [Оглавление](#оглавление)
   - [Общие сведения](#общие-сведения)
+  - [Установка](#установка)
   - [Подключение на сайте](#подключение-на-сайте)
     - [Пример](#пример)
     - [Описание параметров](#описание-параметров)
@@ -25,9 +29,6 @@
 
 ## Общие сведения
 
-Javascript SDK для Партнеров Сбер ID, упрощающая подключение Сбер ID на сайте.
-
-**Общие сведения**
 Javascript SDK для Партнеров Сбер ID, упрощающая получение кода авторизации (AuthCode).
 
 Для получения access token и данных клиента рекомендуется воспользоваться Java SDK или Python SDK.
@@ -42,9 +43,23 @@ SDK позволяет:
 -   быстрый вход без необходимости перехода на страницу OIDC
 -   персонализированная кнопка входа
 
+## Установка
+
+Используя [npm](https://npmjs.org):
+
+```sh
+npm i --save @sberid/js-sdk
+```
+
+Используя [yarn](https://yarnpkg.com):
+
+```sh
+yarn add @sberid/js-sdk
+```
+
 ## Подключение на сайте
 
-Подключите продуктовую версию ([sberid-sdk.min.js][production]) или добавить ([index.esm.js][esm]) в проект для импорта небходимых зависимостей. Подключить файл стилей ([common.css][css]) в блок head.
+Подключите продуктовую версию ([sberid-sdk.production.js][production]) или добавить ([index.esm.js][esm]) в проект для импорта небходимых зависимостей. Подключить файл стилей ([common.css][css]) в блок head.
 
 [production]: ../sberid-sdk.production.js
 [esm]: ../dist/index.esm.js
@@ -52,7 +67,7 @@ SDK позволяет:
 
 ```html
 <link href="js/libs/sberid-sdk/styles/common.css" rel="stylesheet">
-<script src="js/libs/sberid-sdk/ssberid-sdk.production.js"></script>
+<script src="js/libs/sberid-sdk/sberid-sdk.production.js"></script>
 ```
 
 После загрузки страницы для инициализации приложения необходимо создать новый экземпляр SberidSDK. Функция создания принимает следующие параметры:
@@ -192,7 +207,7 @@ fetch('/params')
 
 _Подробнее про универсальные ссылки можно почитать на [странице][universallink]._
 
-[universallink]: https://sbtatlas.sigma.sbrf.ru/wiki/pages/viewpage.action?pageId=2182089510
+[universallink]: https://developer.sberbank.ru/doc/v1/sberbank-id/reqparametrs
 
 #### Параметры для отправки Sberbank Analytics _(params.sa)_
 
@@ -279,5 +294,6 @@ function onSuccessCallback(result) {
 
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: https://makeapullrequest.com
-[version-badge]: https://img.shields.io/npm/v/sberid-js-sdk.svg?style=flat-square
-[package]: https://www.npmjs.com/package/sberid-js-sdk
+[version-badge]: https://img.shields.io/npm/v/@sberid/js-sdk.svg?style=flat-square
+[package]: https://www.npmjs.com/package/@sberid/js-sdk
+[downloads-badge]: https://img.shields.io/npm/dt/@sberid/js-sdk.svg?style=flat-square
