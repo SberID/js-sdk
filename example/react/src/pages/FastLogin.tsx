@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 
-import { FastLogin } from 'sberid-js-sdk';
+import { FastLogin } from '@sberid/js-sdk';
 
 import { Log, LogProps, Navigation } from '../components';
 import { oidcParams, baseUrl } from '../constants/common';
@@ -36,16 +36,16 @@ export const FastLoginDemo = () => {
 
     return (
         <div className="layout">
+            <Navigation />
             <div className="header">
-                <Navigation />
-                <div className="typography typography--body">Быстрый вход</div>
-            </div>
-            <div className="form">
-                <div className="form-button">
-                    <button type="button" onClick={handleClick} className="button">Войти</button>
-                </div>
+                <div className="typography typography--title">Быстрый вход</div>
             </div>
             <div className="content">
+                <div className="form">
+                    <div className="form-button">
+                        <button type="button" onClick={handleClick} className="button">Войти</button>
+                    </div>
+                </div>
                 <div className="logger">
                     {messages.length > 0 && messages.map((item, i) => <Log key={i} message={item.message} importance={item.importance} />)}
                 </div>

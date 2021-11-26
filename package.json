@@ -1,6 +1,6 @@
 {
   "name": "@sberid/js-sdk",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Javascript SDK для партнеров Сбер ID, упрощающая подключение SberbankID на сайте.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -47,7 +47,7 @@
     "LICENSE.txt",
     "CHANGELOG.md",
     "README.md"
-],
+  ],
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "@babel/plugin-transform-modules-commonjs": "^7.14.5",

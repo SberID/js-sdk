@@ -1,21 +1,24 @@
-import React, {FC, useCallback, useLayoutEffect, useRef, useState} from 'react';
+import React, {FC, useCallback, useEffect, useLayoutEffect, useRef, useState} from 'react';
 
 import {
-    NotificationProps,
     SberidSDK,
     SberidSDKErrorResult,
     SberidSDKProps,
     SberidSDKSuccessResult,
-    UniversalLinkProps,
-} from 'sberid-js-sdk';
+    showLoader,
+    hideLoader,
+} from '@sberid/js-sdk';
 
 import {Log, LogProps, Navigation} from '../components';
-import {oidcParams, sa, baseUrl} from '../constants/common';
+import {oidcParams, notification, sa, baseUrl, universalLinkParams} from '../constants/common';
 
 export const SdkDemo: FC = () => {
     const [messages, setMessages] = useState<LogProps[]>([]);
+    const [disabled, setDisabled] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const containerRef = useRef<HTMLDivElement>(null);
+    const sdk = useRef<SberidSDK>();
 
     const onSuccessCallback = useCallback(
         (result?: SberidSDKSuccessResult): void => {
@@ -47,25 +50,13 @@ export const SdkDemo: FC = () => {
         [messages, setMessages],
     );
 
-    const universalLinkParams: UniversalLinkProps = {
-        needAdditionalRedirect: true,
-        universalLinkUrl: `${baseUrl}/CSAFront/oidc/sberbank_id/authorize.do`,
-        baseUrl: `${baseUrl}/CSAFront/oidc/authorize.do`,
-    };
-
-    const notification: NotificationProps = {
-        enable: true,
-        onNotificationBannerClose: () => {
-            // eslint-disable-next-line no-console
-            console.log('Баннер закрыт');
-        },
-        onNotificationBannerOpen: () => {
-            // eslint-disable-next-line no-console
-            console.log('Баннер открыт');
-        },
-    };
+    
 
     useLayoutEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.innerHTML = '';
+        }
+
         const params: SberidSDKProps = {
             oidc: oidcParams,
             baseUrl,
@@ -94,17 +85,66 @@ export const SdkDemo: FC = () => {
             onErrorCallback,
         };
 
-        new SberidSDK(params);
-    }, []);
+        sdk.current = new SberidSDK(params);
+    }, [onSuccessCallback, onErrorCallback]);
+
+    useEffect(() => {
+        if (sdk.current) {
+            if (disabled) {
+                sdk.current.disable();
+            } else {
+                sdk.current.enable();
+            }
+        }
+
+    }, [disabled, sdk]);
+
+    useEffect(() => {
+        if (loading) {
+            showLoader();
+        } else {
+            hideLoader();
+        }
+
+    }, [loading]);
 
     return (
         <div className="layout">
+            <Navigation />
             <div className="header">
-                <Navigation />
-                <div className="typography typography--body">SDK</div>
+                <div className="typography typography--title">Инициализация SDK</div>
             </div>
             <div className="content">
-                <div ref={containerRef} className="container"></div>
+                <div ref={containerRef} className="button-container"></div>
+                <div className="typography typography--body">Настройки кнопки:</div>
+                <div className="form">
+                    <div className="form-group">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                className="checkbox__input"
+                                name="disabled"
+                                onChange={({target}) => setDisabled(target.checked)}
+                                checked={disabled}
+                            />
+                            <span className="checkbox__icon"></span>
+                            <span className="checkbox__label">Disabled</span>
+                        </label>
+                    </div>
+                    <div className="form-group">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                className="checkbox__input"
+                                name="loading"
+                                onChange={({target}) => setLoading(target.checked)}
+                                checked={loading}
+                            />
+                            <span className="checkbox__icon"></span>
+                            <span className="checkbox__label">Loading</span>
+                        </label>
+                    </div>
+                </div>
                 <div className="logger">
                     {messages.length > 0 &&
                         messages.map((item, i) => (
