@@ -1,4 +1,4 @@
-import {OidcParams, SberVisorProps} from 'sberid-js-sdk';
+import {OidcParams, SberVisorProps, NotificationProps, UniversalLinkProps} from '@sberid/js-sdk';
 
 export const oidcParams: OidcParams = {
     response_type: 'code',
@@ -18,4 +18,22 @@ export const sa: SberVisorProps = {
     clientName: 'ООО Ромашка',
 };
 
-export const baseUrl = 'https://ift-csa.testonline.sberbank.ru:4456';
+export const baseUrl = 'https://online.sberbank.ru';
+
+export const universalLinkParams: UniversalLinkProps = {
+    needAdditionalRedirect: true,
+    universalLinkUrl: `${baseUrl}/CSAFront/oidc/sberbank_id/authorize.do`,
+    baseUrl: `${baseUrl}/CSAFront/oidc/authorize.do`,
+};
+
+export const notification: NotificationProps = {
+    enable: true,
+    onNotificationBannerClose: () => {
+        // eslint-disable-next-line no-console
+        console.log('Баннер закрыт');
+    },
+    onNotificationBannerOpen: () => {
+        // eslint-disable-next-line no-console
+        console.log('Баннер открыт');
+    },
+};

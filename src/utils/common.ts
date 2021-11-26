@@ -99,7 +99,7 @@ const isVisible = (elem?: HTMLElement) =>
 export const showLoader = (): void => {
     const loaders = document.querySelectorAll('.sbid-button-loader');
 
-    for (let i = 0; i < loaders.length; i++) {
+    for (let i = 0; i < loaders.length; i += 1) {
         const element = loaders[i];
 
         element.classList.add('sbid-button-loader--show');
@@ -109,7 +109,7 @@ export const showLoader = (): void => {
 export const hideLoader = (): void => {
     const loaders = document.querySelectorAll('.sbid-button-loader');
 
-    for (let i = 0; i < loaders.length; i++) {
+    for (let i = 0; i < loaders.length; i += 1) {
         const element = loaders[i];
 
         element.classList.remove('sbid-button-loader--show');

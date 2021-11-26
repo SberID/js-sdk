@@ -1,3 +1,15 @@
+.logger {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 16px 0;
+}
+
+.logger--inline {
+    display: inline-flex;
+    width: auto;
+}
+
 .logger__item {
     color: #363636;
     white-space: pre;

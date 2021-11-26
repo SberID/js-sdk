@@ -204,12 +204,16 @@ export class SberidSDK {
     async handleButtonClick(e: Event, link?: HTMLElement): Promise<boolean> {
         this.w = void 0;
 
-        if (link?.getAttribute('disabled') === 'true') {
-            return false;
-        }
-
         e.preventDefault();
         e.stopPropagation();
+
+        const isDisabled =
+            link?.getAttribute('disabled') === 'disabled' ||
+            link?.getAttribute('disabled') === 'true';
+
+        if (isDisabled) {
+            return false;
+        }
 
         showLoader();
         this.disable();
