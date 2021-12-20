@@ -1,7 +1,7 @@
 import { FetchProps } from '../interfaces/common';
 export declare const BROWSER_MAP: Record<string, string>;
 export declare const PLATFORMS_MAP: Record<string, string>;
-export declare const VERSION = "3.0.0";
+export declare const VERSION = "3.0.2";
 export declare const BASE_URL = "https://online.sberbank.ru";
 export declare const BASE_DEEPLINK_URL = "sberbankidlogin://sberbankidsso";
 export declare const DEFAULT_REQUEST_TIMEOUT_MS = 10000;
