@@ -5,7 +5,7 @@ import {buildUrl, getUrlSearchParams, log} from '../utils/common';
 import {getBrowserAlias} from './utils';
 import {BrowserModeDetector, Browser} from '../browser/';
 import {BrowserName, MAX_STATE_LENGTH} from '../constants/common';
-import {BROWSERS, Os, Protocol, appRedirects} from './constants';
+import {BROWSERS, Os, Protocol, appRedirects, BROWSER_ALIASES_MAP} from './constants';
 import {defaultUniversalLinkConfig} from '../sberid-sdk/constants';
 import {generateRandom, isOIDCRedirect} from '../sberid-sdk/utils';
 import {SberidSDKProps} from '../sberid-sdk';
@@ -39,6 +39,11 @@ export class SberidUniversalLink {
                 'utm_term',
                 'utm_content',
             ]);
+        }
+
+        if (this.config.debug) {
+            log(['Инициализируем модуль UniversalLink'], 'info');
+            log(['Параметры инициализации: ', this.config], 'info');
         }
     }
 
@@ -102,6 +107,10 @@ export class SberidUniversalLink {
             }
         }
 
+        if (oidcParams.scope && oidcParams.scope.includes('+')) {
+            oidcParams.scope = oidcParams.scope.split('+').join(' ');
+        }
+
         const alias = getBrowserAlias(this.parser.getBrowserName());
         const os = this.parser.getOSName(true);
         const customParams = {
@@ -131,16 +140,20 @@ export class SberidUniversalLink {
     }
 
     async run(params = {} as OidcParams): Promise<UniversalLinkResponse> {
+        const oidcParams = {
+            ...this.config.params,
+            ...params,
+        };
         const isPrivate = (await this.detect()) === 'incognito';
         const result = this.parser.getResult();
         const alias = getBrowserAlias(this.parser.getBrowserName());
         const os = this.parser.getOSName(true);
-        const oidc = this.buildOidcParams(params);
+        const oidc = this.buildOidcParams(oidcParams);
 
         const isAllowedAndroidBrowser = os === Os.ANDROID && this.isAllowedBrowser(alias);
         const isAllowedIosBrowser =
             os === Os.IOS &&
-            (alias === BrowserName.SAFARI ||
+            (alias === BROWSER_ALIASES_MAP[BrowserName.SAFARI] ||
                 (this.isAllowedBrowser(alias) && this.config.needAdditionalRedirect));
         const isUniversalLink =
             !isPrivate && !result.app.name && (isAllowedIosBrowser || isAllowedAndroidBrowser);
@@ -162,6 +175,10 @@ export class SberidUniversalLink {
             deeplink: deeplink,
             oidc,
         };
+
+        if (this.config.debug) {
+            log(['Получены данные для формирования ссылки: ', response]);
+        }
 
         return new Promise((resolve) => {
             resolve(response);

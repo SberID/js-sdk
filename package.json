@@ -1,6 +1,6 @@
 {
   "name": "@sberid/js-sdk",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Javascript SDK для партнеров Сбер ID, упрощающая подключение SberbankID на сайте.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -35,7 +35,7 @@
     "types": "tsc --noEmit",
     "lint": "eslint src/**/*.{js,ts}",
     "test": "jest --coverage",
-    "build": "npm run build:clean && npm run build:lib && npm run build:style",
+    "build": "npm run build:clean && npm run build:lib && npm run build:style && npm run types",
     "build:clean": "rimraf dist",
     "build:lib": "rollup --config config/rollup/rollup.config.lib.js",
     "build:style": "npx postcss ./src/styles/**/*.css -d ./dist/styles",

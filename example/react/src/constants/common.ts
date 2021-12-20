@@ -6,7 +6,7 @@ export const oidcParams: OidcParams = {
     client_id: '3BA14915-C78C-F687-77C0-71784F4797B1',
     state: 'ut8Ar4MUZEMDPIiD2ko914y37s0Q0VKJgxeCkU0yzTY',
     redirect_uri: 'http://sbt-oafs-754:9080/WebTestApp/oidc/requestToken.do',
-    scope: 'openid name',
+    scope: 'openid+name',
     nonce: 'NfZscgwxPY7v0kYvuPfnFHA57bqHxQc3lV51Oiaxlo4',
     authApp: 'sbol',
 };
