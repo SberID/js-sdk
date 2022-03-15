@@ -1,5 +1,5 @@
-import { AppDetail, BrowserDetail, OSDetail, ParsedResult, ParserConfig, PlatformDetail } from './interfaces';
-export declare class Parser {
+import { AbstractParser, AppDetail, BrowserDetail, OSDetail, ParsedResult, ParserConfig, PlatformDetail } from './interfaces';
+export declare class Parser implements AbstractParser {
     private ua;
     parsedResult: ParsedResult;
     constructor(UA: string | undefined);
@@ -20,6 +20,6 @@ export declare class Parser {
     parsePlatform(): PlatformDetail;
     getPlatform(): PlatformDetail;
     getPlatformType(toLowerCase?: boolean): string;
-    parse(): Parser;
+    parse(): AbstractParser;
     getResult(): ParsedResult;
 }

@@ -1,6 +1,27 @@
-import {Parser} from './parser';
-
 export type BrowserMode = 'normal' | 'incognito' | 'unknown';
+
+export interface AbstractParser {
+    parsedResult: ParsedResult;
+    getUA(): string;
+    test(regex: RegExp): boolean;
+    getDetailInfo<T>(parsersList: ParserConfig<T>[]): ParserConfig<T> | undefined;
+    parseBrowser(): BrowserDetail;
+    getBrowser(): BrowserDetail;
+    getBrowserName(toLowerCase?: boolean): string;
+    getBrowserVersion(): string | undefined;
+    parseOS(): OSDetail;
+    getOS(): OSDetail;
+    getOSName(toLowerCase?: boolean): string;
+    getOSVersion(): string | undefined;
+    parseApp(): AppDetail;
+    getApp(): AppDetail;
+    getAppName(toLowerCase?: boolean): string;
+    parsePlatform(): PlatformDetail;
+    getPlatform(): PlatformDetail;
+    getPlatformType(toLowerCase?: boolean): string;
+    parse(): AbstractParser;
+    getResult(): ParsedResult;
+}
 
 export interface AbstractBrowserModeDetector {
     browserMode: BrowserMode;
@@ -33,7 +54,7 @@ export interface PlatformDetail {
 }
 
 export interface ParserConfig<T> {
-    test: RegExp[] | ((parser: Parser) => boolean);
+    test: RegExp[] | ((parser: AbstractParser) => boolean);
     describe: ((ua: string) => T) | (() => T);
 }
 

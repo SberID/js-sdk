@@ -1,6 +1,5 @@
-import { Parser } from './parser';
-import { ParsedResult } from './interfaces';
+import { AbstractParser, ParsedResult } from './interfaces';
 export declare class Browser {
-    static getParser(UA: string): Parser;
+    static getParser(UA: string): AbstractParser;
     static parse(UA: string): ParsedResult;
 }

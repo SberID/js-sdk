@@ -1,6 +1,6 @@
 import {OidcParams} from '../interfaces/common';
 import {AddionalRedirectParams, UniversalLinkConfig, UniversalLinkResponse} from './interfaces';
-import {BrowserMode} from '../browser/interfaces';
+import {AbstractParser, BrowserMode} from '../browser/interfaces';
 import {buildUrl, getUrlSearchParams, log} from '../utils/common';
 import {getBrowserAlias} from './utils';
 import {BrowserModeDetector, Browser} from '../browser/';
@@ -14,7 +14,7 @@ import {Cookies} from '../services/cookies';
 export class SberidUniversalLink {
     private config: UniversalLinkConfig;
     proxyParams: string[] = ['authApp', 'app_redirect_uri'];
-    parser = Browser.getParser(window.navigator.userAgent);
+    parser: AbstractParser = Browser.getParser(window.navigator.userAgent);
 
     constructor(config: SberidSDKProps) {
         const browserName = this.parser.getBrowserName();
@@ -180,20 +180,16 @@ export class SberidUniversalLink {
             log(['Получены данные для формирования ссылки: ', response]);
         }
 
-        return new Promise((resolve) => {
-            resolve(response);
-        });
+        return Promise.resolve(response);
     }
 
     detect(): Promise<BrowserMode> {
-        const browsingModeDetector = new BrowserModeDetector();
-
         try {
+            const browsingModeDetector = new BrowserModeDetector();
+
             return browsingModeDetector.run();
         } catch (e) {
-            return new Promise((resolve) => {
-                resolve('normal');
-            });
+            return Promise.resolve('normal');
         }
     }
 }

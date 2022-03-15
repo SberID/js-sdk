@@ -1,4 +1,5 @@
 import {
+    AbstractParser,
     AppDetail,
     BrowserDetail,
     OSDetail,
@@ -14,7 +15,7 @@ import {
     textToLowerCase,
 } from './utils';
 
-export class Parser {
+export class Parser implements AbstractParser {
     private ua: string;
     parsedResult: ParsedResult;
 
@@ -141,7 +142,7 @@ export class Parser {
 
     parsePlatform(): PlatformDetail {
         this.parsedResult.platform = {};
-        const platformDetail = this.getDetailInfo(platformParsersList);
+        const platformDetail = this.getDetailInfo<PlatformDetail>(platformParsersList);
 
         if (platformDetail) {
             this.parsedResult.platform = platformDetail.describe(this.getUA());
@@ -167,7 +168,7 @@ export class Parser {
         return type || '';
     }
 
-    parse(): Parser {
+    parse(): AbstractParser {
         this.parseBrowser();
         this.parseOS();
         this.parsePlatform();
