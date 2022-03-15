@@ -38,17 +38,9 @@ export const openDialog = (url: string, params: AnyObject = {}): Window | null =
     if (params.centered) {
         const screenX = typeof window.screenX != 'undefined' ? window.screenX : window.screenLeft;
         const screenY = typeof window.screenY != 'undefined' ? window.screenY : window.screenTop;
-        const outerWidth =
-            typeof window.outerWidth != 'undefined'
-                ? window.outerWidth
-                : document.documentElement.clientWidth;
-        const outerHeight =
-            typeof window.outerHeight != 'undefined'
-                ? window.outerHeight
-                : document.documentElement.clientHeight - 22;
-        const V = screenX < 0 ? window.screen.width + screenX : screenX;
-        params.left = parseInt(`${V + (outerWidth - params.width) / 2}`, 10);
-        params.top = parseInt(`${screenY + (outerHeight - params.height) / 2.5}`, 10);
+
+        params.left = parseInt(`${screenX + (window.innerWidth - params.width) / 2}`, 10);
+        params.top = parseInt(`${screenY + (window.innerHeight - params.height) / 2}`, 10);
     }
     const w = window.open(
         url,
@@ -92,10 +84,15 @@ const bufferToString = (buffer: Uint8Array): string => {
     return state.join('');
 };
 
+export const getCrypto = (): Crypto => {
+    //ie 11.x uses msCrypto
+    return (window.crypto || (window as any).msCrypto) as Crypto;
+};
+
 export const generateRandom = (size: number): string => {
     const buffer = new Uint8Array(size);
-    if (typeof window !== 'undefined' && !!window.crypto) {
-        window.crypto.getRandomValues(buffer);
+    if (typeof window !== 'undefined' && !!getCrypto()) {
+        getCrypto().getRandomValues(buffer);
     } else {
         for (let i = 0; i < size; i += 1) {
             buffer[i] = (Math.random() * CHARSET.length) | 0;

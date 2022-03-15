@@ -46,7 +46,7 @@ export const sendSberAnalytics = <T>({
 
     const sdkVersion = 'js_' + getVersion();
     const merchantTitle = clientName || getMeta('title');
-    const url = window.location.href;
+    const url = window.location.origin;
 
     try {
         const params: SberVisorEventParams = {
@@ -57,8 +57,8 @@ export const sendSberAnalytics = <T>({
                 merchUrl: url,
                 merchantTitle,
                 sdkVersion,
-                result,
-                errorDescription: description,
+                ...(result ? {result} : {}),
+                ...(description ? {errorDescription: description} : {}),
                 ...extendedProperties,
             },
         };

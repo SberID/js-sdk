@@ -260,9 +260,9 @@ export class SafariBrowser implements AbstractBrowserItemModeDetect {
     detectBrowsingMode(): void {
         const extendWindow: SafariWindowExtended = window;
         const browser = Browser.getParser(window.navigator.userAgent);
-        const osMajorVersion = parseInt((<string>browser.getOSVersion()).split('.')[0], 10) || 0;
+        const osMajorVersion = parseInt((<string>browser.getOSVersion())?.split('.')[0], 10) || 0;
         const browserMajorVersion =
-            parseInt((<string>browser.getBrowserVersion()).split('.')[0], 10) || 0;
+            parseInt((<string>browser.getBrowserVersion())?.split('.')[0], 10) || 0;
         const osName = browser.getOSName(true);
 
         if (extendWindow.safariIncognito || !navigator.cookieEnabled) {
@@ -281,7 +281,8 @@ export class SafariBrowser implements AbstractBrowserItemModeDetect {
             extendWindow.localStorage.removeItem('test');
             if (
                 (osName === 'ios' && osMajorVersion >= 14) ||
-                (osName === 'macos' && browserMajorVersion >= 14)
+                (osName === 'macos' && browserMajorVersion >= 14) ||
+                (osName === 'ios' && browserMajorVersion === 0)
             ) {
                 this.BrowserModeDetector.browserMode = 'normal';
             } else {

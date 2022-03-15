@@ -1,4 +1,11 @@
-import {BrowserDetail, OSDetail, ParserConfig, PlatformDetail, AppDetail} from './interfaces';
+import {
+    BrowserDetail,
+    OSDetail,
+    ParserConfig,
+    PlatformDetail,
+    AppDetail,
+    AbstractParser,
+} from './interfaces';
 import {APP_MAP, commonVersionIdentifier, OS_MAP, PLATFORMS_MAP} from './constants';
 import {Parser} from './parser';
 import {BrowserName} from 'constants/common';
@@ -538,7 +545,7 @@ export const browserParsersList: ParserConfig<BrowserDetail>[] = [
     },
     /* Android Browser */
     {
-        test: (parser: Parser): boolean => {
+        test: (parser: AbstractParser): boolean => {
             const notLikeAndroid = !parser.test(/like android/i);
             const butAndroid = parser.test(/android/i);
             return notLikeAndroid && butAndroid;
@@ -763,7 +770,7 @@ export const osParsersList: ParserConfig<OSDetail>[] = [
     },
     /* Android */
     {
-        test: (parser: Parser): boolean => {
+        test: (parser: AbstractParser): boolean => {
             const notLikeAndroid = !parser.test(/like android/i);
             const butAndroid = parser.test(/android/i);
             return notLikeAndroid && butAndroid;
@@ -931,7 +938,7 @@ export const platformParsersList = [
     },
     /* iPod/iPhone */
     {
-        test: (parser: Parser): boolean => {
+        test: (parser: AbstractParser): boolean => {
             const iDevice = parser.test(/ipod|iphone/i);
             const likeIDevice = parser.test(/like (ipod|iphone)/i);
 
@@ -964,7 +971,8 @@ export const platformParsersList = [
     },
     /* BlackBerry */
     {
-        test: (parser: Parser): boolean => parser.getBrowserName() === BrowserName.BLACKBERRY,
+        test: (parser: AbstractParser): boolean =>
+            parser.getBrowserName() === BrowserName.BLACKBERRY,
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.mobile,
             vendor: 'BlackBerry',
@@ -972,14 +980,15 @@ export const platformParsersList = [
     },
     /* Bada */
     {
-        test: (parser: Parser): boolean => parser.getBrowserName() === BrowserName.BADA,
+        test: (parser: AbstractParser): boolean => parser.getBrowserName() === BrowserName.BADA,
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.mobile,
         }),
     },
     /* Windows Phone */
     {
-        test: (parser: Parser): boolean => parser.getBrowserName() === BrowserName.WINDOWS_PHONE,
+        test: (parser: AbstractParser): boolean =>
+            parser.getBrowserName() === BrowserName.WINDOWS_PHONE,
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.mobile,
             vendor: 'Microsoft',
@@ -987,8 +996,8 @@ export const platformParsersList = [
     },
     /* Android Tablet */
     {
-        test: (parser: Parser): boolean => {
-            const osMajorVersion = Number(String(parser.getOSVersion()).split('.')[0]);
+        test: (parser: AbstractParser): boolean => {
+            const osMajorVersion = Number(String(parser.getOSVersion())?.split('.')[0]);
 
             return parser.getOSName(true) === 'android' && osMajorVersion >= 3;
         },
@@ -998,14 +1007,14 @@ export const platformParsersList = [
     },
     /* Android Mobile */
     {
-        test: (parser: Parser): boolean => parser.getOSName(true) === 'android',
+        test: (parser: AbstractParser): boolean => parser.getOSName(true) === 'android',
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.mobile,
         }),
     },
     /* desktop */
     {
-        test: (parser: Parser): boolean => parser.getOSName(true) === 'macos',
+        test: (parser: AbstractParser): boolean => parser.getOSName(true) === 'macos',
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.desktop,
             vendor: 'Apple',
@@ -1013,28 +1022,28 @@ export const platformParsersList = [
     },
     /* Windows */
     {
-        test: (parser: Parser): boolean => parser.getOSName(true) === 'windows',
+        test: (parser: AbstractParser): boolean => parser.getOSName(true) === 'windows',
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.desktop,
         }),
     },
     /* Linux */
     {
-        test: (parser: Parser): boolean => parser.getOSName(true) === 'linux',
+        test: (parser: AbstractParser): boolean => parser.getOSName(true) === 'linux',
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.desktop,
         }),
     },
     /* PlayStation 4 */
     {
-        test: (parser: Parser): boolean => parser.getOSName(true) === 'playstation 4',
+        test: (parser: AbstractParser): boolean => parser.getOSName(true) === 'playstation 4',
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.tv,
         }),
     },
     /* Roku */
     {
-        test: (parser: Parser): boolean => parser.getOSName(true) === 'roku',
+        test: (parser: AbstractParser): boolean => parser.getOSName(true) === 'roku',
         describe: (): PlatformDetail => ({
             type: PLATFORMS_MAP.tv,
         }),

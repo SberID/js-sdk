@@ -12,7 +12,7 @@ export declare class SberidSDK {
     config: SberidSDKConfig;
     onSuccessCallback: (data?: SberidSDKSuccessResult) => void;
     onErrorCallback: (data?: SberidSDKErrorResult) => void;
-    parser: import("../browser/parser").Parser;
+    parser: import("../browser/interfaces").AbstractParser;
     windowStatus: string;
     w: any;
     fastLogin: AbstractFastLogin;

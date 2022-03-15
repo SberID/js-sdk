@@ -1,6 +1,6 @@
 {
   "name": "@sberid/js-sdk",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Javascript SDK для партнеров Сбер ID, упрощающая подключение SberbankID на сайте.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

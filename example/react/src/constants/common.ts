@@ -12,7 +12,7 @@ export const oidcParams: OidcParams = {
 };
 
 export const sa: SberVisorProps = {
-    enable: false,
+    enable: true,
     init: 'auto',
     clientId: '3BA14915-C78C-F687-77C0-71784F4797B1',
     clientName: 'ООО Ромашка',

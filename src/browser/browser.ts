@@ -1,8 +1,8 @@
 import {Parser} from './parser';
-import {ParsedResult} from './interfaces';
+import {AbstractParser, ParsedResult} from './interfaces';
 
 export class Browser {
-    static getParser(UA: string): Parser {
+    static getParser(UA: string): AbstractParser {
         if (typeof UA !== 'string') {
             throw new Error('UserAgent should be a string');
         }

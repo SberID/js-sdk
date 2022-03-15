@@ -46,7 +46,7 @@ export const PLATFORMS_MAP: Record<string, string> = {
     tv: 'tv',
 };
 
-export const VERSION = '3.0.2';
+export const VERSION = '3.0.3';
 export const BASE_URL = 'https://online.sberbank.ru';
 export const BASE_DEEPLINK_URL = 'sberbankidlogin://sberbankidsso';
 export const DEFAULT_REQUEST_TIMEOUT_MS = 10000;
